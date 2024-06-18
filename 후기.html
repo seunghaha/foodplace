@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>맛집을 찾아서 - 후기</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 드롭다운 메뉴 호버 스타일 */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        /* 추가적인 스타일 */
+        .review-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .review-header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .review-body {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 0 0 10px 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- 배경 이미지 및 블러 효과 -->
+<div class="background-blur"></div>
+<div class="background-container">
+    <!-- 헤더 -->
+    <header class="bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">맛집을 찾아서</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">사이트 소개</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="location.href='지역선택.html';">
+                                식사
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="지역선택.html">종로</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">마포</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">성동</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">서초</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">강남</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">송파</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDessert" role="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="location.href='디저트선택.html';">
+                                디저트
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownDessert">
+                                <li><a class="dropdown-item" href="디저트선택.html">종로</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">마포</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">성동</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">서초</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">강남</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">송파</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="커뮤니티.html">커뮤니티</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="후기.html">후기</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex ms-3">
+                        <input class="form-control me-2" type="search" placeholder="검색" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">검색</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 후기 화면 -->
+    <section class="py-5">
+        <div class="container review-container">
+            <h2 class="text-center review-header">후기 공유</h2>
+            <div class="mb-4 review-body">
+                <label for="reviewTitle" class="form-label">제목</label>
+                <input type="text" class="form-control" id="reviewTitle" placeholder="제목을 입력하세요">
+            </div>
+            <div class="mb-4 review-body">
+                <label for="reviewContent" class="form-label">내용</label>
+                <textarea class="form-control" id="reviewContent" rows="5" placeholder="내용을 입력하세요"></textarea>
+            </div>
+            <button class="btn btn-primary mb-3" id="saveReview">게시</button>
+            <h3 class="mt-5">후기</h3>
+            <ul class="list-group" id="reviewList"></ul>
+        </div>
+    </section>
+</div>
+
+<script>
+  document.getElementById('saveReview').addEventListener('click', function() {
+    const title = document.getElementById('reviewTitle').value;
+    const content = document.getElementById('reviewContent').value;
+
+    if (title && content) {
+      const review = {
+        title: title,
+        content: content,
+        date: new Date().toLocaleString()
+      };
+
+      let reviews = JSON.parse(sessionStorage.getItem('reviews')) || [];
+      reviews.push(review);
+      sessionStorage.setItem('reviews', JSON.stringify(reviews));
+
+      renderReviews();
+      document.getElementById('reviewTitle').value = '';
+      document.getElementById('reviewContent').value = '';
+    } else {
+      alert('제목과 내용을 입력하세요.');
+    }
+  });
+
+  function renderReviews() {
+    const reviewList = document.getElementById('reviewList');
+    reviewList.innerHTML = '';
+    const reviews = JSON.parse(sessionStorage.getItem('reviews')) || [];
+    reviews.forEach(review => {
+      const reviewItem = document.createElement('li');
+      reviewItem.className = 'list-group-item';
+      reviewItem.innerHTML = `<h5>${review.title}</h5><p>${review.content}</p><small>${review.date}</small>`;
+      reviewList.appendChild(reviewItem);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    renderReviews();
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

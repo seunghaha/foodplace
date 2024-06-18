@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>맛집을 찾아서</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 드롭다운 메뉴 호버 스타일 */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<!-- 헤더 -->
+<header class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">맛집을 찾아서</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">사이트 소개</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="location.href='지역선택.html';">
+                            식사
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="지역선택.html">종로</a></li>
+                            <li><a class="dropdown-item" href="지역선택.html">마포</a></li>
+                            <li><a class="dropdown-item" href="지역선택.html">성동</a></li>
+                            <li><a class="dropdown-item" href="지역선택.html">용산</a></li>
+                            <li><a class="dropdown-item" href="지역선택.html">강남</a></li>
+                            <li><a class="dropdown-item" href="지역선택.html">송파</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDessert" role="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="location.href='디저트선택.html';">
+                            디저트
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownDessert">
+                            <li><a class="dropdown-item" href="디저트선택.html">종로</a></li>
+                            <li><a class="dropdown-item" href="디저트선택.html">마포</a></li>
+                            <li><a class="dropdown-item" href="디저트선택.html">성동</a></li>
+                            <li><a class="dropdown-item" href="디저트선택.html">용산</a></li>
+                            <li><a class="dropdown-item" href="디저트선택.html">강남</a></li>
+                            <li><a class="dropdown-item" href="디저트선택.html">송파</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="커뮤니티.html">커뮤니티</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="후기.html">후기</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-3">
+                    <input class="form-control me-2" type="search" placeholder="검색" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">검색</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<!-- 메인 화면 -->
+<section class="text-center bg-image" style="background-image: url('images/bg.png'); height: 100vh;">
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+            <h1 class="mb-3">서울의 맛집을 모아모아</h1>
+            <h4 class="mb-3">맛집을 찾아서</h4>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

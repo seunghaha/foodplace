@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>맛집을 찾아서 - 커뮤니티</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 드롭다운 메뉴 호버 스타일 */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        /* 추가적인 스타일 */
+        .post-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .post-header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .post-body {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 0 0 10px 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- 배경 이미지 및 블러 효과 -->
+<div class="background-blur"></div>
+<div class="background-container">
+    <!-- 헤더 -->
+    <header class="bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">맛집을 찾아서</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">사이트 소개</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="location.href='지역선택.html';">
+                                식사
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="지역선택.html">종로</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">마포</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">성동</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">서초</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">강남</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">송파</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDessert" role="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="location.href='디저트선택.html';">
+                                디저트
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownDessert">
+                                <li><a class="dropdown-item" href="디저트선택.html">종로</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">마포</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">성동</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">서초</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">강남</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">송파</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="커뮤니티.html">커뮤니티</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="후기.html">후기</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex ms-3">
+                        <input class="form-control me-2" type="search" placeholder="검색" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">검색</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 커뮤니티 화면 -->
+    <section class="py-5">
+        <div class="container post-container">
+            <h2 class="text-center post-header">맛집 공유</h2>
+            <div class="mb-4 post-body">
+                <label for="postTitle" class="form-label">제목</label>
+                <input type="text" class="form-control" id="postTitle" placeholder="제목을 입력하세요">
+            </div>
+            <div class="mb-4 post-body">
+                <label for="postContent" class="form-label">내용</label>
+                <textarea class="form-control" id="postContent" rows="5" placeholder="내용을 입력하세요"></textarea>
+            </div>
+            <button class="btn btn-primary mb-3" id="savePost">게시</button>
+            <h3 class="mt-5">게시물</h3>
+            <ul class="list-group" id="postList"></ul>
+        </div>
+    </section>
+</div>
+
+<script>
+  document.getElementById('savePost').addEventListener('click', function() {
+    const title = document.getElementById('postTitle').value;
+    const content = document.getElementById('postContent').value;
+
+    if (title && content) {
+      const post = {
+        title: title,
+        content: content,
+        date: new Date().toLocaleString()
+      };
+
+      let posts = JSON.parse(sessionStorage.getItem('posts')) || [];
+      posts.push(post);
+      sessionStorage.setItem('posts', JSON.stringify(posts));
+
+      renderPosts();
+      document.getElementById('postTitle').value = '';
+      document.getElementById('postContent').value = '';
+    } else {
+      alert('제목과 내용을 입력하세요.');
+    }
+  });
+
+  function renderPosts() {
+    const postList = document.getElementById('postList');
+    postList.innerHTML = '';
+    const posts = JSON.parse(sessionStorage.getItem('posts')) || [];
+    posts.forEach(post => {
+      const postItem = document.createElement('li');
+      postItem.className = 'list-group-item';
+      postItem.innerHTML = `<h5>${post.title}</h5><p>${post.content}</p><small>${post.date}</small>`;
+      postList.appendChild(postItem);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    renderPosts();
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

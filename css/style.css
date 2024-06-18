@@ -1,0 +1,50 @@
+body {
+    font-family: 'Do Hyeon', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.section-title {
+    margin-bottom: 30px;
+}
+
+.card-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.bg-image {
+    background-size: cover;
+    background-position: center;
+}
+
+.text-white h1, .text-white h4 {
+    color: #ffffff;
+}
+
+/* 드롭다운 메뉴 호버 스타일 */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* 배경 이미지 및 블러 효과 */
+.background-blur {
+    background-image: url('../images/bg.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.background-container {
+    position: relative;
+    z-index: 1;
+}

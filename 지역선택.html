@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>맛집을 찾아서 - 지역 선택</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 드롭다운 메뉴 호버 스타일 */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<!-- 배경 이미지 및 블러 효과 -->
+<div class="background-blur"></div>
+<div class="background-container">
+    <!-- 헤더 -->
+    <header class="bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">맛집을 찾아서</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">사이트 소개</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="location.href='지역선택.html';">
+                                식사
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="지역선택.html">종로</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">마포</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">성동</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">서초</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">강남</a></li>
+                                <li><a class="dropdown-item" href="지역선택.html">송파</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="커뮤니티.html" id="navbarDropdownDessert" role="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="location.href='디저트선택.html';">
+                                디저트
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownDessert">
+                                <li><a class="dropdown-item" href="디저트선택.html">종로</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">마포</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">성동</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">서초</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">강남</a></li>
+                                <li><a class="dropdown-item" href="디저트선택.html">송파</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">커뮤니티</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="후기.html">후기</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex ms-3">
+                        <input class="form-control me-2" type="search" placeholder="검색" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">검색</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 지역 선택 화면 -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center">식사</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <a href="https://naver.me/GdyQVpbd">
+                            <img src="images/1.jpg" class="card-img-top" alt="서초">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">용산</h5>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <a href="https://naver.me/GYCFAsPE">
+                            <img src="images/2.jpg" class="card-img-top" alt="마포">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">마포</h5>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <a href="https://naver.me/F42kX7QH">
+                            <img src="images/3.jpg" class="card-img-top" alt="종로">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">종로</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <a href="https://naver.me/5oEShyZ4">
+                            <img src="images/bg4.jpg" class="card-img-top" alt="강남">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">강남</h5>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <a href="https://naver.me/5VmRokwr">
+                            <img src="images/bg1.jpg" class="card-img-top" alt="송파">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">송파</h5>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <a href="https://naver.me/5RhEQgLm">
+                            <img src="images/2.jpg" class="card-img-top" alt="성동">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">성동</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
